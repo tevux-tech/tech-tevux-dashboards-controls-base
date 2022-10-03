@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <OutputType>Exe</OutputType>
+    <Version>0.19.0</Version>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+
+    <!--Configuring source Link-->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>embedded</DebugType>
+    <!--End-->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <!--This enables "deterministic builds"-->
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="DevBot9.Mvvm" Version="21.1.0" />
+    <PackageReference Include="DevBot9.Mvvm.UI" Version="21.1.0" />
+    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.38.0">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Themes\RulesEditor.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ScriptCommand.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Code\InputControlBase\ExposedProperties\" />
+    <Folder Include="Code\InputControlBase\TemplateProperties\" />
+    <Folder Include="Code\OutputControlBase\ExposedProperties\" />
+  </ItemGroup>
+
+  <!--Tevux related settings-->
+  <PropertyGroup>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <RootNamespace>Tech.Tevux.Dashboards.Controls</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="Tevux.Dashboards.Abstractions.AssemblyLoadContextAttribute">
+      <ContextName>Tech.Tevux.Dashboards.Controls</ContextName>
+    </AssemblyAttribute>
+  </ItemGroup>
+</Project>

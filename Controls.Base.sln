@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tech.Tevux.Dashboards.Controls.Base", "Tech.Tevux.Dashboards.Controls.Base\Tech.Tevux.Dashboards.Controls.Base.csproj", "{B4398D94-70CE-4C5B-B56C-16C672EF0C27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "nuke-build", "nuke-build\nuke-build.csproj", "{FE9B6843-7D51-4A93-8163-3B5825D36DAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE9B6843-7D51-4A93-8163-3B5825D36DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE9B6843-7D51-4A93-8163-3B5825D36DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4398D94-70CE-4C5B-B56C-16C672EF0C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4398D94-70CE-4C5B-B56C-16C672EF0C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4398D94-70CE-4C5B-B56C-16C672EF0C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4398D94-70CE-4C5B-B56C-16C672EF0C27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7FE4B5C-DDC8-415D-AAF6-FC82CF43EDA3}
+	EndGlobalSection
+EndGlobal

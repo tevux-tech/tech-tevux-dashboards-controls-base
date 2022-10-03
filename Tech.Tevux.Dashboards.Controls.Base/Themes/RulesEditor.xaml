@@ -1,0 +1,147 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:core="clr-namespace:System;assembly=mscorlib" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:local="clr-namespace:Tech.Tevux.Dashboards.Controls" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d"
+                    >
+    <Style TargetType="{x:Type local:RulesEditor}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RulesEditor}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.Resources>
+                            <ObjectDataProvider x:Key="ConditionsList"
+                                                MethodName="GetValues"
+                                                ObjectType="{x:Type core:Enum}"
+                                                >
+                                <ObjectDataProvider.MethodParameters>
+                                    <x:Type Type="local:Condition" />
+                                </ObjectDataProvider.MethodParameters>
+                            </ObjectDataProvider>
+
+
+                        </Grid.Resources>
+                        <Grid Grid.Row="0" Margin="0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0"
+                                    Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ExecuteGuiCommand}"
+                                    CommandParameter="add" Content="Add"
+                                    />
+
+                            <Button Grid.Column="1"
+                                    Margin="2,0,10,0"
+                                    Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ExecuteGuiCommand}"
+                                    CommandParameter="remove" Content="Remove"
+                                    />
+                        </Grid>
+
+                        <DataGrid x:Name="PART_DataGrid"
+                                  Grid.Row="1"
+                                  AutoGenerateColumns="False" BorderThickness="0" CanUserAddRows="False"
+                                  DataContext="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                  GridLinesVisibility="None" HeadersVisibility="None"
+                                  ItemsSource="{Binding AppearanceRules, UpdateSourceTrigger=PropertyChanged}"
+                                  >
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="140">
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <ComboBox HorizontalContentAlignment="Center"
+                                                      ItemsSource="{Binding Source={StaticResource ConditionsList}}"
+                                                      SelectedItem="{Binding Condition, UpdateSourceTrigger=PropertyChanged}"
+                                                      >
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Label Content="{Binding}" />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox HorizontalContentAlignment="Center"
+                                                      ItemsSource="{Binding Source={StaticResource ConditionsList}}"
+                                                      SelectedItem="{Binding Condition, UpdateSourceTrigger=PropertyChanged}"
+                                                      >
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Label Content="{Binding}" />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn MinWidth="50">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                     Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                                                     />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.AllStyles}" SelectedItem="{Binding Style, UpdateSourceTrigger=PropertyChanged}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Label Width="60"
+                                                               VerticalAlignment="Center"
+                                                               Background="{Binding Background}"
+                                                               Content="{Binding Type}"
+                                                               Foreground="{Binding Foreground}"
+                                                               />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=DataContext.AllStyles}" SelectedItem="{Binding Style, UpdateSourceTrigger=PropertyChanged}">
+
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Label Width="60"
+                                                               VerticalAlignment="Center"
+                                                               Background="{Binding Background}"
+                                                               Content="{Binding Type}"
+                                                               Foreground="{Binding Foreground}"
+                                                               />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+
+                                            </ComboBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                                     Text="{Binding TextFormat, UpdateSourceTrigger=PropertyChanged}"
+                                                     />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
