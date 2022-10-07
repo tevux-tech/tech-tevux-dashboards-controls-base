@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <OutputType>Exe</OutputType>
-    <Version>0.20.0-preview.0</Version>
+    <Version>0.20.0-preview.1</Version>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
 
     <!--Configuring source Link-->
