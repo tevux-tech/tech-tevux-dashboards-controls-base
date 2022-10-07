@@ -23,8 +23,7 @@ class Build : NukeBuild {
     SemVersion CurrentPackageVersion { get; set; }
     SemVersion NextPackageVersion { get; set; }
 
-    static AbsolutePath OutputDirectoryTevuxTech => RootDirectory / "nuke-build" / "output" / "tevux-tech";
-    static AbsolutePath OutputDirectoryLightCon => RootDirectory / "nuke-build" / "output" / "lightcon";
+    static AbsolutePath OutputDirectory => RootDirectory / "nuke-build" / "output";
     static AbsolutePath NuspecFilename => RootDirectory / "Tech.Tevux.Dashboards.Controls.Base" / "Tech.Tevux.Dashboards.Controls.Base.nuspec";
     static AbsolutePath ProjectFilename => RootDirectory / "Tech.Tevux.Dashboards.Controls.Base" / "Tech.Tevux.Dashboards.Controls.Base.csproj";
 
@@ -33,8 +32,7 @@ class Build : NukeBuild {
 
     Target Clean => _ => _
         .Executes(() => {
-            EnsureCleanDirectory(OutputDirectoryTevuxTech);
-            EnsureCleanDirectory(OutputDirectoryLightCon);
+            EnsureCleanDirectory(OutputDirectory);
         });
 
     Target GetVersionInfo => _ => _
@@ -81,20 +79,20 @@ class Build : NukeBuild {
 
     Target PackTevuxTech => _ => _
         .DependsOn(Compile)
-        .Produces(OutputDirectoryTevuxTech / "*.nupkg")
+        .Produces(OutputDirectory / "*.nupkg")
         .Executes(() => {
             var settings = new NuGetPackSettings();
 
             settings = settings.SetTargetPath(NuspecFilename);
             settings = settings.SetConfiguration(_configuration);
             settings = settings.SetBuild(false);
-            settings = settings.SetOutputDirectory(OutputDirectoryTevuxTech);
+            settings = settings.SetOutputDirectory(OutputDirectory);
             settings = settings.SetProperty("repository", "https://github.com/tevux-tech/tech-tevux-dashboards-controls-base");
             settings = settings.SetProperty("projectUrl", "https://github.com/tevux-tech/tech-tevux-dashboards-controls-base");
             settings = settings.SetVersion(NextPackageVersion.ToString());
 
             NuGetPack(settings);
-            ReportSummary(_ => _.AddPair("Packages", OutputDirectoryTevuxTech.GlobFiles("*.nupkg").Count.ToString()));
+            ReportSummary(_ => _.AddPair("Packages", OutputDirectory.GlobFiles("*.nupkg").Count.ToString()));
         });
 
     Target PushTevuxTech => _ => _
@@ -105,7 +103,7 @@ class Build : NukeBuild {
                .SetSource("https://nuget.pkg.github.com/tevux-tech/index.json")
                .EnableSkipDuplicate()
                .SetApiKey(apiKey)
-               .CombineWith(OutputDirectoryTevuxTech.GlobFiles("*.nupkg").NotEmpty(), (_, v) => _.SetTargetPath(v)));
+               .CombineWith(OutputDirectory.GlobFiles("*.nupkg").NotEmpty(), (_, v) => _.SetTargetPath(v)));
        });
 
     Target PushNugetOrg => _ => _
@@ -116,7 +114,7 @@ class Build : NukeBuild {
                .SetSource("https://api.nuget.org/v3/index.json")
                .EnableSkipDuplicate()
                .SetApiKey(apiKey)
-               .CombineWith(OutputDirectoryTevuxTech.GlobFiles("*.nupkg").NotEmpty(), (_, v) => _.SetTargetPath(v)));
+               .CombineWith(OutputDirectory.GlobFiles("*.nupkg").NotEmpty(), (_, v) => _.SetTargetPath(v)));
        });
 
     Target Commit => _ => _
