@@ -5,7 +5,15 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <OutputType>Exe</OutputType>
-    <Version>0.20.0-preview.1</Version>
+    <Version>0.21.0</Version>
+    <Company>Tevux Technologies</Company>
+    <Copyright>© 2022 Tevux Technologies</Copyright>
+    <Title>Basic controls for Tevux Dashboards</Title>
+    <Authors>devbotas</Authors>
+    <Description>Base classes for custom Tevux Dashboards controls. Optional, but they implement quite a lot common features.</Description>
+    <RepositoryUrl>https://github.com/tevux-tech/tech-tevux-dashboards-controls</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/tevux-tech/tech-tevux-dashboards-controls</PackageProjectUrl>
+
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
 
     <!--Configuring source Link-->
@@ -21,7 +29,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="DevBot9.Mvvm" Version="21.1.0" />
     <PackageReference Include="DevBot9.Mvvm.UI" Version="21.1.0" />
     <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.38.0">
