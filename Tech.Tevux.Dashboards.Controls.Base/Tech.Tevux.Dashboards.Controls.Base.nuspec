@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
 	<metadata>
-		<id>Tech.Tevux.Dashboards.Controls.Base</id>
+		<id>$id$</id>
 		<version>$version$</version>
-		<title>Tech.Tevux.Dashboards.Controls.Base</title>
-		<authors>Tevux Technologies</authors>
-		<description>Base classes for custom Tevux Dashboards controls. Optional, but they implement quite a lot common features.</description>
-		<copyright>© 2022 Tevux Technologies</copyright>
+		<title>$title$</title>
+		<authors>$authors$</authors>
+		<copyright>$copyright$</copyright>
+		<description>$description$</description>
 		<license type="expression">MIT</license>
 		<requireLicenseAcceptance>true</requireLicenseAcceptance>
 		<repository type="git" url="$repository$" />
 		<projectUrl>$projectUrl$</projectUrl>
 		<tags>tevux.tech</tags>
+		<frameworkReferences>
+			<group targetFramework="net6.0-windows7.0">
+				<frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+			</group>
+		</frameworkReferences>
 	</metadata>
 	<files>
 		<file src="bin\Release\net6.0-windows\Tech.Tevux.Dashboards.Controls.Base.*" target="lib/net6.0" exclude="**.exe" />
