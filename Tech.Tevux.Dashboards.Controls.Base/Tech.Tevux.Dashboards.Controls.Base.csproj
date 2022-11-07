@@ -32,10 +32,10 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="DevBot9.Mvvm" Version="21.1.0" />
     <PackageReference Include="DevBot9.Mvvm.UI" Version="21.1.0" />
-    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.38.0">
+    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.40.0">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
-    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.1.0">
+    <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.4.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
