@@ -11,6 +11,8 @@
 		<requireLicenseAcceptance>true</requireLicenseAcceptance>
 		<repository type="git" url="$repository$" />
 		<projectUrl>$projectUrl$</projectUrl>
+		<icon>images\tevux-logo-symbol.png</icon>
+		<readme>README.md</readme>
 		<tags>tevux.tech</tags>
 		<frameworkReferences>
 			<group targetFramework="net6.0-windows7.0">
@@ -22,6 +24,8 @@
 		</dependencies>
 	</metadata>
 	<files>
+		<file src="Resources\tevux-logo-symbol.png" target="images\" />
+		<file src="..\README.md" target="\" />
 		<file src="bin\Release\net6.0-windows\Tech.Tevux.Dashboards.Controls.Base.*" target="lib/net6.0" exclude="**.exe" />
 	</files>
 </package>

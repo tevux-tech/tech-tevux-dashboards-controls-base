@@ -32,7 +32,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="DevBot9.Mvvm" Version="21.1.0" />
     <PackageReference Include="DevBot9.Mvvm.UI" Version="21.1.0" />
-    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.41.0-preview.10">
+    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.41.0-preview.15">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.4.4">
@@ -72,18 +72,8 @@
       <ContextName>Tech.Tevux.Dashboards.Controls</ContextName>
     </AssemblyAttribute>
   </ItemGroup>
-
   <ItemGroup>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Resources\tevux-logo-symbol.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+    <None Include="..\README.md" Pack="True" PackagePath="\" />
+    <None Include="Resources\tevux-logo-symbol.png" Pack="True" PackagePath="\" />
   </ItemGroup>
 </Project>
