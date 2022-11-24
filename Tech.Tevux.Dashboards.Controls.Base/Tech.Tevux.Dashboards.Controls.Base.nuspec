@@ -17,6 +17,9 @@
 				<frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
 			</group>
 		</frameworkReferences>
+		<dependencies>
+			<group targetFramework="net6.0-windows7.0" />
+		</dependencies>
 	</metadata>
 	<files>
 		<file src="bin\Release\net6.0-windows\Tech.Tevux.Dashboards.Controls.Base.*" target="lib/net6.0" exclude="**.exe" />
