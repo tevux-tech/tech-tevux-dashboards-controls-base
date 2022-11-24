@@ -18,7 +18,7 @@
 			</group>
 		</frameworkReferences>
 		<dependencies>
-			<group targetFramework="net6.0-windows7.0" />
+			<group targetFramework="net6.0" />
 		</dependencies>
 	</metadata>
 	<files>
