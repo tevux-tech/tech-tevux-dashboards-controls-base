@@ -28,6 +28,6 @@
 	<files>
 		<file src="Resources\tevux-logo-symbol.png" target="images\" />
 		<file src="..\README.md" target="\" />
-		<file src="bin\Publish\$id$.*" target="lib/net6.0" exclude="**.exe;**.deps.json" />
+		<file src="bin\Publish\$id$.*" target="lib/net6.0" exclude="**.exe;**.deps.json;**.runtimeconfig.json" />
 	</files>
 </package>
