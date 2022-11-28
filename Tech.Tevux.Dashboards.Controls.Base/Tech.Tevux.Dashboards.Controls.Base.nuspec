@@ -28,6 +28,6 @@
 	<files>
 		<file src="Resources\tevux-logo-symbol.png" target="images\" />
 		<file src="..\README.md" target="\" />
-		<file src="bin\Release\net6.0-windows\Tech.Tevux.Dashboards.Controls.Base.*" target="lib/net6.0" exclude="**.exe" />
+		<file src="bin\Publish\$id$.*" target="lib/net6.0" exclude="**.exe;**.deps.json" />
 	</files>
 </package>
