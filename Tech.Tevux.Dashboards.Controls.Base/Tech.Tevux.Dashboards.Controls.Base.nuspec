@@ -21,13 +21,13 @@
 		</frameworkReferences>
 		<dependencies>
 			<group targetFramework="net6.0" >
-				<dependency id="Tevux.Dashboards.Abstractions" version="0.42.0" exclude="runtime"/>
+				<dependency id="Tevux.Dashboards.Abstractions" version="0.43.0" exclude="runtime"/>
 			</group>
 		</dependencies>
 	</metadata>
 	<files>
 		<file src="Resources\tevux-logo-symbol.png" target="images\" />
 		<file src="..\README.md" target="\" />
-		<file src="bin\Publish\$id$.*" target="lib/net6.0" exclude="**.exe;**.deps.json;**.runtimeconfig.json" />
+		<file src="bin\Publish\$id$.*" target="lib/net6.0" exclude="**.deps.json;**.runtimeconfig.json" />
 	</files>
 </package>
