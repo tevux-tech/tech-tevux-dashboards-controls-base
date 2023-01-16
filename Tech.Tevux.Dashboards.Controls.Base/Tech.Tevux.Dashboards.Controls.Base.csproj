@@ -34,7 +34,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="DevBot9.Mvvm" Version="21.1.0" />
     <PackageReference Include="DevBot9.Mvvm.UI" Version="21.1.0" />
-    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.44.0">
+    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.45.0">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.5.0">
@@ -71,7 +71,7 @@
 
   <ItemGroup>
     <AssemblyAttribute Include="Tevux.Dashboards.Abstractions.AssemblyLoadContextAttribute">
-      <ContextName>Tech.Tevux.Dashboards.Controls</ContextName>
+      <FriendlyName>Tech.Tevux.Dashboards.Controls</FriendlyName>
     </AssemblyAttribute>
   </ItemGroup>
   <ItemGroup>
@@ -79,3 +79,4 @@
     <None Include="Resources\tevux-logo-symbol.png" Pack="True" PackagePath="\" />
   </ItemGroup>
 </Project>
+
