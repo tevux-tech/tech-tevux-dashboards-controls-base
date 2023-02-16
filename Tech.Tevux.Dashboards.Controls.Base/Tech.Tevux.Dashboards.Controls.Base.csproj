@@ -6,7 +6,7 @@
     <NoWarn>CS1591</NoWarn>
     <UseWPF>true</UseWPF>
     <OutputType>Library</OutputType>
-    <Version>0.23.0-preview.24</Version>
+    <Version>0.23.0-preview.25</Version>
     <Company>Tevux Technologies</Company>
     <Copyright>© 2022 Tevux Technologies</Copyright>
     <Title>Basic controls for Tevux Dashboards</Title>
@@ -34,7 +34,7 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="DevBot9.Mvvm" Version="21.1.0" />
     <PackageReference Include="DevBot9.Mvvm.UI" Version="21.1.0" />
-    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.46.0">
+    <PackageReference Include="Tevux.Dashboards.Abstractions" Version="0.47.0">
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
     <PackageReference Include="Tevux.Tools.RepositorySettings" Version="1.5.1">
