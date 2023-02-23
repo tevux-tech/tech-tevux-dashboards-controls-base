@@ -11,9 +11,6 @@ namespace Tech.Tevux.Dashboards.Controls;
 public partial class CSharpScriptControlBase : ControlBase {
     private readonly CancellationTokenSource _globalCts = new();
     private bool _isDisposed;
-    protected ScriptContextBase _scriptContext;
-    protected AssemblyLoadContext _assemblyLoadContext = AssemblyLoadContext.Default;
-
     static CSharpScriptControlBase() {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(CSharpScriptControlBase), new FrameworkPropertyMetadata(typeof(CSharpScriptControlBase)));
     }
@@ -23,13 +20,13 @@ public partial class CSharpScriptControlBase : ControlBase {
         CancelExecutionCommand = new AsyncCommand(() => Task.Factory.StartNew(CancelExecution), CanCancelExecutionCommand);
     }
 
+    protected AssemblyLoadContext AssemblyLoadContext { get; set; } = AssemblyLoadContext.Default;
+    protected ScriptContextBase ScriptContext { get; set; } = new EmptyScriptContextBase();
     public bool CanCancelExecutionCommand() {
         return ((AsyncCommand)ExecuteCommand).IsExecuting;
     }
     public void CancelExecution() {
-        if (_scriptContext is not null) {
-            _scriptContext.IsCancellationRequested = true;
-        }
+        ScriptContext.IsCancellationRequested = true;
     }
 
     public void Execute() {
@@ -43,7 +40,7 @@ public partial class CSharpScriptControlBase : ControlBase {
         });
 
         Task.Run(() => {
-            ExecuteScript(script, imports, _assemblyLoadContext, _scriptContext, out errorMessage);
+            ExecuteScript(script, imports, AssemblyLoadContext, ScriptContext, out errorMessage);
         }).Wait();
 
         Dispatcher.Invoke(() => {
