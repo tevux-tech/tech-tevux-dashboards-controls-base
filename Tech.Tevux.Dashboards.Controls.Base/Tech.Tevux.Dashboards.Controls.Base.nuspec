@@ -21,7 +21,7 @@
 		</frameworkReferences>
 		<dependencies>
 			<group targetFramework="net6.0" >
-				<dependency id="Tevux.Dashboards.Abstractions" version="0.48.0" exclude="runtime"/>
+				<dependency id="Tevux.Dashboards.Abstractions" version="0.49.0" exclude="runtime"/>
 			</group>
 		</dependencies>
 	</metadata>
