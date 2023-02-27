@@ -22,6 +22,10 @@
 		<dependencies>
 			<group targetFramework="net6.0" >
 				<dependency id="Tevux.Dashboards.Abstractions" version="0.50.0" exclude="runtime"/>
+				<dependency id="Microsoft.CodeAnalysis.CSharp.Scripting" version="4.4.0"/>
+				<dependency id="Microsoft.CodeAnalysis.CSharp.Workspaces" version="4.4.0"/>
+				<dependency id="Microsoft.CodeAnalysis.Scripting.Common" version="4.4.0"/>
+				<dependency id="AvalonEdit" version="6.2.0.78"/>
 			</group>
 		</dependencies>
 	</metadata>
