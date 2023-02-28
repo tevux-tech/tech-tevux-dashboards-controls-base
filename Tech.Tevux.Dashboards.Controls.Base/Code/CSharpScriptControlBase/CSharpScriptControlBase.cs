@@ -14,7 +14,7 @@ public partial class CSharpScriptControlBase : ControlBase {
 
     static CSharpScriptControlBase() {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(CSharpScriptControlBase), new FrameworkPropertyMetadata(typeof(CSharpScriptControlBase)));
-        CaptionProperty.OverrideMetadata(typeof(CSharpScriptControlBase), new PropertyMetadata("Click me"));
+        CaptionProperty.OverrideMetadata(typeof(CSharpScriptControlBase), new FrameworkPropertyMetadata("Click me"));
     }
 
     public CSharpScriptControlBase() {
