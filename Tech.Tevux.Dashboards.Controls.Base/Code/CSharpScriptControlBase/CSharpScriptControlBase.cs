@@ -1,18 +1,20 @@
-using System.Diagnostics;
-using System.Runtime.Loader;
-using System.Threading.Tasks;
-using System.Threading;
+using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.CodeAnalysis.Scripting.Hosting;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
+using System.Diagnostics;
+using System.Runtime.Loader;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
 public partial class CSharpScriptControlBase : ControlBase {
     private readonly CancellationTokenSource _globalCts = new();
     private bool _isDisposed;
+
     static CSharpScriptControlBase() {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(CSharpScriptControlBase), new FrameworkPropertyMetadata(typeof(CSharpScriptControlBase)));
+        CaptionProperty.OverrideMetadata(typeof(CSharpScriptControlBase), new PropertyMetadata("Click me"));
     }
 
     public CSharpScriptControlBase() {
@@ -22,9 +24,11 @@ public partial class CSharpScriptControlBase : ControlBase {
 
     protected AssemblyLoadContext AssemblyLoadContext { get; set; } = AssemblyLoadContext.Default;
     protected ScriptContextBase ScriptContext { get; set; } = new EmptyScriptContextBase();
+
     public bool CanCancelExecutionCommand() {
         return ((AsyncCommand)ExecuteCommand).IsExecuting;
     }
+
     public void CancelExecution() {
         ScriptContext.IsCancellationRequested = true;
     }
@@ -69,7 +73,7 @@ public partial class CSharpScriptControlBase : ControlBase {
         base.Dispose(isCalledManually);
     }
 
-    private void ExecuteScript(string script, string imports, AssemblyLoadContext assemblyContext, ScriptContextBase scriptContext, out string errorMessage) {
+    private static void ExecuteScript(string script, string imports, AssemblyLoadContext assemblyContext, ScriptContextBase scriptContext, out string errorMessage) {
         errorMessage = "";
         var stopwatch = Stopwatch.StartNew();
 
