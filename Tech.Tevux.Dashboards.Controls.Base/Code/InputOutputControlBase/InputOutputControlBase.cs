@@ -3,13 +3,14 @@ using System.Collections.Generic;
 namespace Tech.Tevux.Dashboards.Controls;
 
 public partial class InputOutputControlBase : ControlBase {
-    private bool _isDisposed = false;
+    private bool _isDisposed;
     private readonly object _rulesLock = new();
 
     // Cached values only using for reconfiguration purposes. If value updates come in rarely,
     // modifying formatting does not result in immediate visual changes. That is annoying,
     // so using cached values to temporarily simulate "new" incoming values.
     private decimal _cachedDecimalValue = 0m;
+
     private string _cachedStringValue = "...";
 
     protected List<AppearanceRule> AppearanceRules { get; } = new();

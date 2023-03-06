@@ -2,10 +2,8 @@ using System.Windows.Controls;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class ControlBase : Control, IEridanusControl {
-    private bool _isDisposed = false;
-
-    public event PropertyChangedEventHandler? PropertyChanged = delegate { };
+public partial class ControlBase : Control, IDisposable, IErrorMessageProvider {
+    private bool _isDisposed;
 
     public void Dispose() {
         // A good article explaining how to implement Dispose. https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-dispose
