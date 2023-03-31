@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Threading;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using ICSharpCode.AvalonEdit;
@@ -12,7 +9,7 @@ using Microsoft.CodeAnalysis.Formatting;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-[OptionEditor(typeof(CSharpScriptControlBase), "Script editor")]
+[DisplayName("Script editor")]
 public partial class CSharpScriptEditor : Control, IDisposable {
     private readonly CancellationTokenSource _globalCts = new();
     private readonly CSharpScriptControlBase? _scriptButton;

@@ -1,6 +1,11 @@
 ﻿global using DevBot9.Mvvm;
 global using System;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Globalization;
+global using System.Threading;
+global using System.Threading.Tasks;
 global using System.Windows;
+global using System.Windows.Controls;
 global using Tevux.Dashboards.Abstractions;
