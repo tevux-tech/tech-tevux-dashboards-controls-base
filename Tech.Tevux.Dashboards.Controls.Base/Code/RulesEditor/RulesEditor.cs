@@ -1,16 +1,9 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using DevBot9.Mvvm;
-
 namespace Tech.Tevux.Dashboards.Controls;
 
-[OptionEditor(typeof(OutputControlBase), "Rule editor")]
+[DisplayName("Rule editor")]
 public partial class RulesEditor : Control, IDisposable {
     private readonly CancellationTokenSource _globalCts = new();
-    private bool _isDisposed = false;
+    private bool _isDisposed;
     private DataGrid? _ruleDataGrid;
     private readonly OutputControlBase? _ruleSourceControl;
     static RulesEditor() {
