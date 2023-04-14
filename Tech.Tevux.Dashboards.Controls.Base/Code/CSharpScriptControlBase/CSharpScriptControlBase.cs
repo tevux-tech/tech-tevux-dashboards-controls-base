@@ -3,8 +3,6 @@ using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.CodeAnalysis.Scripting.Hosting;
 using System.Diagnostics;
 using System.Runtime.Loader;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Tech.Tevux.Dashboards.Controls;
 

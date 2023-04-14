@@ -6,7 +6,7 @@
     <NoWarn>CS1591</NoWarn>
     <UseWPF>true</UseWPF>
     <OutputType>Library</OutputType>
-    <Version>0.32.0</Version>
+    <Version>0.33.0</Version>
     <Company>Tevux Technologies</Company>
     <Copyright>© 2022 Tevux Technologies</Copyright>
     <Title>Basic controls for Tevux Dashboards</Title>
@@ -47,9 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Themes\CSharpScriptControlBase.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
     <Page Update="Themes\RulesEditor.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
