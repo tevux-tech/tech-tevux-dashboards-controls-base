@@ -1,6 +1,7 @@
-namespace Tech.Tevux.Dashboards.Controls;
+﻿namespace Tech.Tevux.Dashboards.Controls;
+public partial class NumericInputControlBase : Control, IControlBase, INumericInputControlBase, IDisposable, IErrorMessageProvider {
+    #region IDisposable
 
-public partial class ControlBase : Control, IDisposable, IControlBase, IErrorMessageProvider, ITooltipProvider {
     private bool _isDisposed;
 
     public void Dispose() {
@@ -20,4 +21,6 @@ public partial class ControlBase : Control, IDisposable, IControlBase, IErrorMes
             _isDisposed = true;
         }
     }
+
+    #endregion
 }

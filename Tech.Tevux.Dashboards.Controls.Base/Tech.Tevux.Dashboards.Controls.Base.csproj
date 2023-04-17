@@ -61,9 +61,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Code\InputControlBase\ExposedProperties\" />
-    <Folder Include="Code\InputControlBase\TemplateProperties\" />
-    <Folder Include="Code\OutputControlBase\ExposedProperties\" />
+    <Folder Include="Code\!Obsolete\InputControlBase\ExposedProperties\" />
+    <Folder Include="Code\!Obsolete\InputControlBase\TemplateProperties\" />
+    <Folder Include="Code\!Obsolete\OutputControlBase\ExposedProperties\" />
   </ItemGroup>
 
   <!--Tevux related settings-->
