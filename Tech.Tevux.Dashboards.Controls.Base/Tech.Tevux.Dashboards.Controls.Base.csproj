@@ -47,10 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Themes\RulesEditor.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Themes\ScriptCommand.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

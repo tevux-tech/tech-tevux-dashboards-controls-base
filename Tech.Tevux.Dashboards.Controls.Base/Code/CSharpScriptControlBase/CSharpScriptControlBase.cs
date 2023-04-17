@@ -6,7 +6,7 @@ using System.Runtime.Loader;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class CSharpScriptControlBase : ControlBase {
+public partial class CSharpScriptControlBase : ControlBase, ICSharpScriptControlBase {
     private readonly CancellationTokenSource _globalCts = new();
     private bool _isDisposed;
 
