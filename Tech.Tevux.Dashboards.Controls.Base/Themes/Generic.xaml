@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="MyViewboxStyle" TargetType="Viewbox">
+    <Style x:Key="TtViewboxStyle" TargetType="Viewbox">
         <!--  Need to find a way to share this between controls...  -->
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Alignment}" Value="Left">
