@@ -1,5 +1,8 @@
-﻿namespace Tech.Tevux.Dashboards.Controls;
-public partial class TextualOutputControlBase : Control, IControlBase, IOutputControlBase, IDisposable, IErrorMessageProvider, IConditionalOutputBase {
+﻿using System.Windows.Media;
+using Tevux.Dashboards.Abstractions;
+
+namespace Tech.Tevux.Dashboards.Controls;
+public partial class TextualOutputControlBase : Control, IControlBase, ITextualOutputControlBase, IDisposable, IErrorMessageProvider, IConditionalOutputControlBase {
 
 
     private readonly object _rulesLock = new();
@@ -10,16 +13,45 @@ public partial class TextualOutputControlBase : Control, IControlBase, IOutputCo
     private decimal _cachedDecimalValue = 0m;
 
     private string _cachedStringValue = "...";
+    private readonly Dictionary<uint, SolidColorBrush> _backgroundBrushCache = new();
+    private readonly Dictionary<uint, SolidColorBrush> _foregroundBrushCache = new();
+    private readonly SolidColorBrush _defaultBackgroundBrush;
+    private readonly SolidColorBrush _defaultForegroundBrush;
+
 
     protected List<AppearanceRule> AppearanceRules { get; } = new();
+
+    public TextualOutputControlBase() {
+        var backgroundBytes = BitConverter.GetBytes(AppearanceRuleStyle.Normal.Background);
+        _defaultBackgroundBrush = new SolidColorBrush(Color.FromArgb(backgroundBytes[3], backgroundBytes[2], backgroundBytes[1], backgroundBytes[0]));
+        _defaultBackgroundBrush.Freeze();
+
+        var foregroundBytes = BitConverter.GetBytes(AppearanceRuleStyle.Normal.Foreground);
+        _defaultForegroundBrush = new SolidColorBrush(Color.FromArgb(foregroundBytes[3], foregroundBytes[2], foregroundBytes[1], foregroundBytes[0]));
+        _defaultForegroundBrush.Freeze();
+    }
 
     public virtual void Reconfigure() {
         lock (_rulesLock) {
             var rules = Rules.Replace("\r", "").Split('\n');
 
             AppearanceRules.Clear();
+            _backgroundBrushCache.Clear();
+            _foregroundBrushCache.Clear();
             foreach (var ruleString in rules) {
-                if (AppearanceRule.TryParse(ruleString, out var parsedRule)) { AppearanceRules.Add(parsedRule); }
+                if (AppearanceRule.TryParse(ruleString, out var parsedRule)) {
+                    AppearanceRules.Add(parsedRule);
+
+                    var backgroundBytes = BitConverter.GetBytes(parsedRule.Style.Background);
+                    var backgroundBrush = new SolidColorBrush(Color.FromArgb(backgroundBytes[3], backgroundBytes[2], backgroundBytes[1], backgroundBytes[0]));
+                    backgroundBrush.Freeze();
+                    _backgroundBrushCache[parsedRule.Style.Background] = backgroundBrush;
+
+                    var foregroundBytes = BitConverter.GetBytes(parsedRule.Style.Foreground);
+                    var foregroundBrush = new SolidColorBrush(Color.FromArgb(foregroundBytes[3], foregroundBytes[2], foregroundBytes[1], foregroundBytes[0]));
+                    foregroundBrush.Freeze();
+                    _foregroundBrushCache[parsedRule.Style.Foreground] = foregroundBrush;
+                }
             }
         }
 
@@ -43,8 +75,8 @@ public partial class TextualOutputControlBase : Control, IControlBase, IOutputCo
         lock (_rulesLock) {
             foreach (var appearanceRule in AppearanceRules) {
                 if (appearanceRule.Matches(number)) {
-                    Background = appearanceRule.Style.Background;
-                    Foreground = appearanceRule.Style.Foreground;
+                    Background = _backgroundBrushCache[appearanceRule.Style.Background];
+                    Foreground = _foregroundBrushCache[appearanceRule.Style.Foreground];
 
                     // User may have not specified text format for the rule; using default text format then.
                     if (string.IsNullOrEmpty(appearanceRule.TextFormat) == false) {
@@ -58,8 +90,8 @@ public partial class TextualOutputControlBase : Control, IControlBase, IOutputCo
 
         // If the rules weren't applied, reverting back to default visual properties.
         if (ruleApplied == false) {
-            Background = Controls.Style.Normal.Background;
-            Foreground = Controls.Style.Normal.Foreground;
+            Background = _defaultBackgroundBrush;
+            Foreground = _defaultForegroundBrush;
         }
 
         try {
@@ -78,8 +110,8 @@ public partial class TextualOutputControlBase : Control, IControlBase, IOutputCo
             // Trying to apply color rules first.
             foreach (var appearanceRule in AppearanceRules) {
                 if (appearanceRule.Matches(text)) {
-                    Background = appearanceRule.Style.Background;
-                    Foreground = appearanceRule.Style.Foreground;
+                    Background = _backgroundBrushCache[appearanceRule.Style.Background];
+                    Foreground = _foregroundBrushCache[appearanceRule.Style.Foreground];
 
                     if (string.IsNullOrEmpty(appearanceRule.TextFormat) == false) {
                         CombinedFormat = appearanceRule.TextFormat;
@@ -92,8 +124,8 @@ public partial class TextualOutputControlBase : Control, IControlBase, IOutputCo
 
         // If the rules weren't applied, reverting back to default visual properties.
         if (ruleApplied == false) {
-            Background = Controls.Style.Normal.Background;
-            Foreground = Controls.Style.Normal.Foreground;
+            Background = _defaultBackgroundBrush;
+            Foreground = _defaultForegroundBrush;
         }
 
         Caption = string.Format(CultureInfo.InvariantCulture, CombinedFormat, text);

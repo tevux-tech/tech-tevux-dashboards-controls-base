@@ -6,7 +6,7 @@ public partial class TextualOutputControlBase {
         typeof(string),
         typeof(TextualOutputControlBase),
         new PropertyMetadata("", (d, e) => {
-            (d as InputOutputControlBase)?.Reconfigure();
+            (d as TextualOutputControlBase)?.Reconfigure();
         }));
 
     [ExposedOption(OptionType.SingleLineText)]
