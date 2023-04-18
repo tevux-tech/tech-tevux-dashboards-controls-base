@@ -1,6 +1,6 @@
 namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class ControlBase : Control, IDisposable, IControlBase, IErrorMessageProvider, ITooltipProvider {
+public partial class ControlBase : Control, IDisposable, IBasicControl, IErrorMessageProviderControl, ITooltipProvider {
     private bool _isDisposed;
 
     public void Dispose() {

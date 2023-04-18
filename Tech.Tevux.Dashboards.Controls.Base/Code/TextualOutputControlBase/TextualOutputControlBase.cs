@@ -1,8 +1,7 @@
 ﻿using System.Windows.Media;
-using Tevux.Dashboards.Abstractions;
 
 namespace Tech.Tevux.Dashboards.Controls;
-public partial class TextualOutputControlBase : Control, IControlBase, ITextualOutputControlBase, IDisposable, IErrorMessageProvider, IConditionalOutputControlBase {
+public partial class TextualOutputControlBase : Control, IBasicControl, ITextualOutputControl, IDisposable, IErrorMessageProviderControl, IConditionalTextualOutputControl {
 
 
     private readonly object _rulesLock = new();
@@ -66,7 +65,7 @@ public partial class TextualOutputControlBase : Control, IControlBase, ITextualO
         }
     }
 
-    protected virtual void ApplyAppearanceRules(decimal number) {
+    protected void ApplyAppearanceRules(decimal number) {
         _cachedStringValue = "";
         _cachedDecimalValue = number;
         var ruleApplied = false;
@@ -95,13 +94,13 @@ public partial class TextualOutputControlBase : Control, IControlBase, ITextualO
         }
 
         try {
-            Caption = string.Format(CultureInfo.InvariantCulture, CombinedFormat, number);
+            OutputText = string.Format(CultureInfo.InvariantCulture, CombinedFormat, number);
         } catch (FormatException) {
-            Caption = "@FormatError@";
+            OutputText = "@FormatError@";
         }
     }
 
-    protected virtual void ApplyAppearanceRules(string text) {
+    protected void ApplyAppearanceRules(string text) {
         _cachedStringValue = text;
         _cachedDecimalValue = 0;
         var ruleApplied = false;
@@ -128,7 +127,7 @@ public partial class TextualOutputControlBase : Control, IControlBase, ITextualO
             Foreground = _defaultForegroundBrush;
         }
 
-        Caption = string.Format(CultureInfo.InvariantCulture, CombinedFormat, text);
+        OutputText = string.Format(CultureInfo.InvariantCulture, CombinedFormat, text);
     }
 
     #region IDisposable

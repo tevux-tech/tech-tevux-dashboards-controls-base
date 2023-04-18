@@ -1,5 +1,5 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
-public partial class NumericInputControlBase : Control, IControlBase, INumericInputControlBase, IDisposable, IErrorMessageProvider {
+public partial class NumericInputControlBase : Control, IBasicControl, INumericInputControl, IDisposable, IErrorMessageProviderControl {
     #region IDisposable
 
     private bool _isDisposed;

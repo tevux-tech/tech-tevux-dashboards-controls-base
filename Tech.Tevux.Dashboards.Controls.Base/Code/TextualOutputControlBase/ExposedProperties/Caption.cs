@@ -8,7 +8,7 @@ public partial class TextualOutputControlBase {
         new PropertyMetadata("..."));
 
     [ExposedOption(OptionType.SingleLineText)]
-    [Category(OptionCategory.Main)]
+    [Category(OptionCategory.Visuals)]
     public string Caption {
         get { return (string)GetValue(CaptionProperty); }
         set { SetValue(CaptionProperty, value); }
