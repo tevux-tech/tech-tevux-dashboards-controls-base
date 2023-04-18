@@ -1,12 +1,12 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class InputOutputControlBase {
+public partial class TextualOutputControlBase {
     public static readonly DependencyProperty FormatProperty = DependencyProperty.Register(
         nameof(Format),
         typeof(string),
-        typeof(InputOutputControlBase),
+        typeof(TextualOutputControlBase),
         new PropertyMetadata("0.0", (d, e) => {
-            (d as InputOutputControlBase)?.Reconfigure();
+            (d as TextualOutputControlBase)?.Reconfigure();
         }));
 
     [ExposedOption(OptionType.SingleLineText)]

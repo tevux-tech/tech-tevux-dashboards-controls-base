@@ -1,11 +1,11 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class OutputControlBase {
+public partial class TextualOutputControlBase {
     public static readonly DependencyProperty OutputTextProperty = DependencyProperty.Register(
         nameof(OutputText),
         typeof(string),
-        typeof(OutputControlBase),
-        new PropertyMetadata(""));
+        typeof(TextualOutputControlBase),
+        new PropertyMetadata("..."));
 
     public string OutputText {
         get { return (string)GetValue(OutputTextProperty); }

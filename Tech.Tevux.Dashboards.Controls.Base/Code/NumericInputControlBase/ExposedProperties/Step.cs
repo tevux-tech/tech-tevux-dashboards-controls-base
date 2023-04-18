@@ -1,10 +1,10 @@
 namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class InputOutputControlBase {
+public partial class NumericInputControlBase {
     public static readonly DependencyProperty StepProperty = DependencyProperty.Register(
         nameof(Step),
         typeof(decimal),
-        typeof(InputOutputControlBase),
+        typeof(NumericInputControlBase),
         new PropertyMetadata(1m), value => {
             var isValid = false;
 

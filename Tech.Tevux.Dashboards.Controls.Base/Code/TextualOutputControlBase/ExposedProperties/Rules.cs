@@ -1,12 +1,12 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class InputOutputControlBase {
+public partial class TextualOutputControlBase {
     public static readonly DependencyProperty RulesProperty = DependencyProperty.Register(
         nameof(Rules),
         typeof(string),
-        typeof(InputOutputControlBase),
+        typeof(TextualOutputControlBase),
         new PropertyMetadata("", (d, e) => {
-            (d as InputOutputControlBase)?.Reconfigure();
+            (d as TextualOutputControlBase)?.Reconfigure();
         }));
 
     [ExposedOption(OptionType.MultiLineText)]

@@ -1,10 +1,10 @@
 namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class InputOutputControlBase {
+public partial class NumericInputControlBase {
     public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register(
         nameof(Maximum),
         typeof(decimal),
-        typeof(InputOutputControlBase),
+        typeof(NumericInputControlBase),
         new PropertyMetadata(1000000m));
 
 
