@@ -2,7 +2,7 @@
 
 namespace Tech.Tevux.Dashboards.Controls;
 [HideExposedOption(nameof(Caption))]
-public partial class TextualOutputControlBase : ControlBase, ITextualOutputControl, IConditionalTextualOutputControl {
+public partial class NumericOutputControlBase : ControlBase, INumericControl, ITextualOutputControl, IConditionalTextualOutputControl {
     private readonly object _rulesLock = new();
 
     private readonly Dictionary<uint, SolidColorBrush> _backgroundBrushCache = new();
@@ -10,10 +10,9 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
     private readonly SolidColorBrush _defaultBackgroundBrush;
     private readonly SolidColorBrush _defaultForegroundBrush;
 
-
     protected List<AppearanceRule> AppearanceRules { get; } = new();
 
-    public TextualOutputControlBase() {
+    public NumericOutputControlBase() {
         var backgroundBytes = BitConverter.GetBytes(AppearanceRuleStyle.Normal.Background);
         _defaultBackgroundBrush = new SolidColorBrush(Color.FromArgb(backgroundBytes[3], backgroundBytes[2], backgroundBytes[1], backgroundBytes[0]));
         _defaultBackgroundBrush.Freeze();
@@ -47,22 +46,21 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
             }
         }
 
-        CombinedFormat = $"{Prefix}{{0}}{Suffix}";
-
-        // Reformatting last used value.       
+        // Reformatting last used value.
         ApplyAppearanceRules();
     }
 
     protected void ApplyAppearanceRules() {
         var ruleApplied = false;
-        CombinedFormat = $"{Prefix}{{0}}{Suffix}";
+        CombinedFormat = $"{Prefix}{{0:F{DecimalPlaces}}}{Suffix}";
+
         lock (_rulesLock) {
-            // Trying to apply color rules first.
             foreach (var appearanceRule in AppearanceRules) {
-                if (appearanceRule.Matches(TextualValue)) {
+                if (appearanceRule.Matches(NumericValue)) {
                     Background = _backgroundBrushCache[appearanceRule.Style.Background];
                     Foreground = _foregroundBrushCache[appearanceRule.Style.Foreground];
 
+                    // User may have not specified text format for the rule; using default text format then.
                     if (string.IsNullOrEmpty(appearanceRule.TextFormat) == false) {
                         CombinedFormat = appearanceRule.TextFormat;
                     }
@@ -78,7 +76,11 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
             Foreground = _defaultForegroundBrush;
         }
 
-        OutputText = string.Format(CultureInfo.InvariantCulture, CombinedFormat, TextualValue);
+        try {
+            OutputText = string.Format(CultureInfo.InvariantCulture, CombinedFormat, NumericValue);
+        } catch (FormatException) {
+            OutputText = "!FormatError!";
+        }
     }
 
     #region IDisposable
