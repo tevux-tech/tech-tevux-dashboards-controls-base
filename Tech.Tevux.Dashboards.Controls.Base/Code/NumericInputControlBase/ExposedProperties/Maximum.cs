@@ -5,7 +5,7 @@ public partial class NumericInputControlBase {
         nameof(Maximum),
         typeof(decimal),
         typeof(NumericInputControlBase),
-        new PropertyMetadata(1000000m));
+        new PropertyMetadata(1000000m, (d, e) => { ((NumericInputControlBase)d).Reconfigure(); }));
 
 
     [ExposedOption(OptionType.Number)]

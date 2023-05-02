@@ -6,7 +6,7 @@ public partial class NumericOutputControlBase {
         typeof(decimal),
         typeof(NumericOutputControlBase),
         new PropertyMetadata(0m, (d, e) => {
-            (d as NumericOutputControlBase)?.Reconfigure();
+            (d as NumericOutputControlBase)?.ApplyAppearanceRules();
         }));
 
     public decimal NumericValue {

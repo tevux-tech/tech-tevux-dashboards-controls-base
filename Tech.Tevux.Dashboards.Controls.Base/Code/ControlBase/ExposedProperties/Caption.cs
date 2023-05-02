@@ -5,7 +5,9 @@ public partial class ControlBase {
         nameof(Caption),
         typeof(string),
         typeof(ControlBase),
-        new PropertyMetadata("..."));
+        new PropertyMetadata("...", (d, e) => {
+            ((ControlBase)d).Reconfigure();
+        }));
 
     [ExposedOption(OptionType.SingleLineText)]
     [Category(OptionCategory.Main)]

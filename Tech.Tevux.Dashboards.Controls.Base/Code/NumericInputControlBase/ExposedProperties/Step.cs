@@ -5,7 +5,7 @@ public partial class NumericInputControlBase {
         nameof(Step),
         typeof(decimal),
         typeof(NumericInputControlBase),
-        new PropertyMetadata(1m), value => {
+        new PropertyMetadata(1m, (d, e) => { ((NumericInputControlBase)d).Reconfigure(); }), value => {
             var isValid = false;
 
             if (value is decimal number) {

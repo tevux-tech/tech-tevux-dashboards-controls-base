@@ -1,6 +1,12 @@
 namespace Tech.Tevux.Dashboards.Controls;
 
 public partial class ControlBase : Control, IDisposable, IBasicControl, IErrorMessageProviderControl, ITooltipProvider {
+    public virtual void Reconfigure() {
+        // Nothing to do for this class. But those deriving from this, should override Reconfigure method.
+    }
+
+    #region IDisposable
+
     private bool _isDisposed;
 
     public void Dispose() {
@@ -20,4 +26,6 @@ public partial class ControlBase : Control, IDisposable, IBasicControl, IErrorMe
             _isDisposed = true;
         }
     }
+
+    #endregion
 }

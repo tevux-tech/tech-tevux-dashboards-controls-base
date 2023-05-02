@@ -6,7 +6,7 @@ public partial class TextualOutputControlBase {
         typeof(string),
         typeof(TextualOutputControlBase),
         new PropertyMetadata("", (d, e) => {
-            (d as TextualOutputControlBase)?.Reconfigure();
+            (d as TextualOutputControlBase)?.ApplyAppearanceRules();
         }));
 
     public string TextualValue {

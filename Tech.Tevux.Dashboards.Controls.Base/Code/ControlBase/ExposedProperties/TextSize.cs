@@ -5,7 +5,9 @@ public partial class ControlBase {
         nameof(TextSize),
         typeof(double),
         typeof(ControlBase),
-        new PropertyMetadata(15.0));
+        new PropertyMetadata(15.0, (d, e) => {
+            ((ControlBase)d).Reconfigure();
+        }));
 
     [ExposedOption(OptionType.Number)]
     [Category(OptionCategory.Visuals)]

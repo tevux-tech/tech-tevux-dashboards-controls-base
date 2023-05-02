@@ -23,7 +23,9 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
         _defaultForegroundBrush.Freeze();
     }
 
-    public virtual void Reconfigure() {
+    public override void Reconfigure() {
+        base.Reconfigure();
+
         lock (_rulesLock) {
             var rules = Rules.Replace("\r", "").Split('\n');
 

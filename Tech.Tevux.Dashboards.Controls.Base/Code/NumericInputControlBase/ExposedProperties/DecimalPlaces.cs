@@ -5,7 +5,7 @@ public partial class NumericInputControlBase {
        nameof(DecimalPlaces),
        typeof(int),
        typeof(NumericInputControlBase),
-       new PropertyMetadata(0),
+       new PropertyMetadata(0, (d, e) => { ((NumericInputControlBase)d).Reconfigure(); }),
        value => {
            var isValid = false;
 

@@ -5,7 +5,7 @@ public partial class NumericInputControlBase {
         nameof(Minimum),
         typeof(decimal),
         typeof(NumericInputControlBase),
-        new PropertyMetadata(0m));
+        new PropertyMetadata(0m, (d, e) => { ((NumericInputControlBase)d).Reconfigure(); }));
 
     [ExposedOption(OptionType.Number)]
     [Category(OptionCategory.Main)]
