@@ -7,6 +7,12 @@ public partial class NumericOutputControlBase {
         typeof(NumericOutputControlBase),
         new PropertyMetadata("", (d, e) => {
             (d as NumericOutputControlBase)?.Reconfigure();
+        }, (d, incomingValue) => {
+            if (incomingValue is null) {
+                return "";
+            } else {
+                return incomingValue;
+            }
         }));
 
     [ExposedOption(OptionType.SingleLineText)]

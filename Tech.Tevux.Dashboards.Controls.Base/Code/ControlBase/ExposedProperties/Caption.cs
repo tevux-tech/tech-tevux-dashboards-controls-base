@@ -7,6 +7,12 @@ public partial class ControlBase {
         typeof(ControlBase),
         new PropertyMetadata("...", (d, e) => {
             ((ControlBase)d).Reconfigure();
+        }, (d, incomingValue) => {
+            if (incomingValue is null) {
+                return "";
+            } else {
+                return incomingValue;
+            }
         }));
 
     [ExposedOption(OptionType.SingleLineText)]
