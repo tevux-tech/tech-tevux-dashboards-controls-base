@@ -1,6 +1,6 @@
 namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class ControlBase : Control, IDisposable, IBasicControl, IErrorMessageProviderControl, ITooltipProvider {
+public partial class ControlBase : ContentControl, IDisposable, IBasicControl, IErrorMessageProviderControl, ITooltipProvider {
     public virtual void Reconfigure() {
         // Nothing to do for this class. But those deriving from this, should override Reconfigure method.
     }
@@ -25,6 +25,11 @@ public partial class ControlBase : Control, IDisposable, IBasicControl, IErrorMe
 
             _isDisposed = true;
         }
+    }
+
+    protected ControlBase() {
+        DataContext = this;
+        SetBinding(FontSizeProperty, "TextSize");
     }
 
     #endregion
