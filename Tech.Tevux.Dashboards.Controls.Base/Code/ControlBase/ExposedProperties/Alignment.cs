@@ -9,7 +9,7 @@ public partial class ControlBase {
             ((ControlBase)d).Reconfigure();
         }));
 
-    [ExposedOption(OptionType.ChoiceText, choices: new[] { "Left", "Top", "Right", "Bottom", "Middle" })]
+    [ExposedChoice(choices: new[] { "Left", "Top", "Right", "Bottom", "Middle" })]
     [Category(OptionCategory.Visuals)]
     public string Alignment {
         get { return (string)GetValue(AlignmentProperty); }

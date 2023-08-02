@@ -17,7 +17,7 @@ public partial class NumericInputControlBase {
             return isValid;
         });
 
-    [ExposedOption(OptionType.Number)]
+    [ExposedNumber]
     [Category(OptionCategory.Main)]
     public decimal Step {
         get { return (decimal)GetValue(StepProperty); }

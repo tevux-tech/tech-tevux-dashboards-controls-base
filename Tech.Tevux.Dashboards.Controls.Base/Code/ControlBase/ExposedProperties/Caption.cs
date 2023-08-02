@@ -15,7 +15,7 @@ public partial class ControlBase {
             }
         }));
 
-    [ExposedOption(OptionType.SingleLineText)]
+    [ExposedSingleLineText]
     [Category(OptionCategory.Main)]
     public string Caption {
         get { return (string)GetValue(CaptionProperty); }

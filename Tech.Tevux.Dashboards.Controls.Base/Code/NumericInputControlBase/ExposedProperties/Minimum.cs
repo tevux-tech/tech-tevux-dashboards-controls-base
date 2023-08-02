@@ -7,7 +7,7 @@ public partial class NumericInputControlBase {
         typeof(NumericInputControlBase),
         new PropertyMetadata(0m, (d, e) => { ((NumericInputControlBase)d).Reconfigure(); }));
 
-    [ExposedOption(OptionType.Number)]
+    [ExposedNumber]
     [Category(OptionCategory.Main)]
     public decimal Minimum {
         get { return (decimal)GetValue(MinimumProperty); }

@@ -20,7 +20,7 @@ public partial class NumericOutputControlBase {
            return isValid;
        });
 
-    [ExposedOption(OptionType.Number)]
+    [ExposedNumber]
     [DisplayName("Decimal places")]
     [Category(OptionCategory.Visuals)]
     public int DecimalPlaces {

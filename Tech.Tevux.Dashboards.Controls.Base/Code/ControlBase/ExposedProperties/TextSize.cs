@@ -9,7 +9,7 @@ public partial class ControlBase {
             ((ControlBase)d).Reconfigure();
         }));
 
-    [ExposedOption(OptionType.Number)]
+    [ExposedNumber]
     [Category(OptionCategory.Visuals)]
     public double TextSize {
         get { return (double)GetValue(TextSizeProperty); }

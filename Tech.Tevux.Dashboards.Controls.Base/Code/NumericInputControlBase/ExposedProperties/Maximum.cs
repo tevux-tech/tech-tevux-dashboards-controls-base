@@ -8,7 +8,7 @@ public partial class NumericInputControlBase {
         new PropertyMetadata(1000000m, (d, e) => { ((NumericInputControlBase)d).Reconfigure(); }));
 
 
-    [ExposedOption(OptionType.Number)]
+    [ExposedNumber]
     [Category(OptionCategory.Main)]
     public decimal Maximum {
         get { return (decimal)GetValue(MaximumProperty); }

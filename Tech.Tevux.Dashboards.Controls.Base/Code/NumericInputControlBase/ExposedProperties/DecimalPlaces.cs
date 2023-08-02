@@ -18,7 +18,7 @@ public partial class NumericInputControlBase {
            return isValid;
        });
 
-    [ExposedOption(OptionType.Number)]
+    [ExposedNumber]
     [DisplayName("Decimal places")]
     [Category(OptionCategory.Visuals)]
     public int DecimalPlaces {

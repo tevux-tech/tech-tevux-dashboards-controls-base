@@ -15,7 +15,7 @@ public partial class NumericOutputControlBase {
             }
         }));
 
-    [ExposedOption(OptionType.SingleLineText)]
+    [ExposedSingleLineText]
     [Category(OptionCategory.Visuals)]
     public string Suffix {
         get { return (string)GetValue(SuffixProperty); }

@@ -14,7 +14,7 @@ public partial class NumericOutputControlBase {
             }
         }));
 
-    [ExposedOption(OptionType.SingleLineText)]
+    [ExposedSingleLineText]
     [Category(OptionCategory.Visuals)]
     public string Prefix {
         get { return (string)GetValue(PrefixProperty); }

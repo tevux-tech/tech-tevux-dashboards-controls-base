@@ -15,7 +15,7 @@ public partial class TextualOutputControlBase {
             }
         }));
 
-    [ExposedOption(OptionType.MultiLineText)]
+    [ExposedMultiLineText]
     [DisplayName("Rules")]
     [Category(OptionCategory.Visuals)]
     public string Rules {
