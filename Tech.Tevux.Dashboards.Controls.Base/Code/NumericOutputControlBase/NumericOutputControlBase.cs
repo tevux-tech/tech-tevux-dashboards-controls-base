@@ -10,7 +10,7 @@ public partial class NumericOutputControlBase : ControlBase, INumericControl, IT
     private readonly SolidColorBrush _defaultBackgroundBrush;
     private readonly SolidColorBrush _defaultForegroundBrush;
 
-    protected List<NumericAppearanceRule> AppearanceRules { get; } = new();
+    protected List<AppearanceRule> AppearanceRules { get; } = new();
 
     public NumericOutputControlBase() {
         var backgroundBytes = BitConverter.GetBytes(AppearanceRuleStyle.Normal.Background);
@@ -22,6 +22,9 @@ public partial class NumericOutputControlBase : ControlBase, INumericControl, IT
         _defaultForegroundBrush.Freeze();
     }
 
+    public List<IAppearanceRuleStyle> GetStyles() {
+        return AppearanceRuleStyle.GetAllStyles();
+    }
     public override void Reconfigure() {
         base.Reconfigure();
 
@@ -32,7 +35,7 @@ public partial class NumericOutputControlBase : ControlBase, INumericControl, IT
             _backgroundBrushCache.Clear();
             _foregroundBrushCache.Clear();
             foreach (var ruleString in rules) {
-                if (NumericAppearanceRule.TryParse(ruleString, out var parsedRule)) {
+                if (AppearanceRule.TryParse(ruleString, out var parsedRule)) {
                     AppearanceRules.Add(parsedRule);
 
                     var backgroundBytes = BitConverter.GetBytes(parsedRule.Style.Background);

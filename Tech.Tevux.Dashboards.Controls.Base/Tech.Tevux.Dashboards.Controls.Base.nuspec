@@ -22,6 +22,7 @@
 		<dependencies>
 			<group targetFramework="net6.0" >
 				<dependency id="Tevux.Dashboards.Abstractions" version="0.73.0-preview.29" exclude="runtime"/>
+				<dependency id="Tech.Tevux.Dashboards.Controls.Common" version="0.2.0-preview.0"/>
 				<dependency id="Microsoft.CodeAnalysis.CSharp.Scripting" version="4.4.0"/>
 				<dependency id="Microsoft.CodeAnalysis.CSharp.Workspaces" version="4.4.0"/>
 				<dependency id="Microsoft.CodeAnalysis.Scripting.Common" version="4.4.0"/>

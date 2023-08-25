@@ -11,7 +11,7 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
     private readonly SolidColorBrush _defaultForegroundBrush;
 
 
-    protected List<TextualAppearanceRule> AppearanceRules { get; } = new();
+    protected List<AppearanceRule> AppearanceRules { get; } = new();
 
     public TextualOutputControlBase() {
         var backgroundBytes = BitConverter.GetBytes(AppearanceRuleStyle.Normal.Background);
@@ -21,6 +21,10 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
         var foregroundBytes = BitConverter.GetBytes(AppearanceRuleStyle.Normal.Foreground);
         _defaultForegroundBrush = new SolidColorBrush(Color.FromArgb(foregroundBytes[3], foregroundBytes[2], foregroundBytes[1], foregroundBytes[0]));
         _defaultForegroundBrush.Freeze();
+    }
+
+    public List<IAppearanceRuleStyle> GetStyles() {
+        return AppearanceRuleStyle.GetAllStyles();
     }
 
     public override void Reconfigure() {
@@ -33,7 +37,7 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
             _backgroundBrushCache.Clear();
             _foregroundBrushCache.Clear();
             foreach (var ruleString in rules) {
-                if (TextualAppearanceRule.TryParse(ruleString, out var parsedRule)) {
+                if (AppearanceRule.TryParse(ruleString, out var parsedRule)) {
                     AppearanceRules.Add(parsedRule);
 
                     var backgroundBytes = BitConverter.GetBytes(parsedRule.Style.Background);
