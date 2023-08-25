@@ -5,9 +5,17 @@ public partial class ControlBase {
         nameof(Caption),
         typeof(string),
         typeof(ControlBase),
-        new PropertyMetadata("..."));
+        new PropertyMetadata("...", (d, e) => {
+            ((ControlBase)d).Reconfigure();
+        }, (d, incomingValue) => {
+            if (incomingValue is null) {
+                return "";
+            } else {
+                return incomingValue;
+            }
+        }));
 
-    [ExposedOption(OptionType.SingleLineText)]
+    [ExposedSingleLineText]
     [Category(OptionCategory.Main)]
     public string Caption {
         get { return (string)GetValue(CaptionProperty); }

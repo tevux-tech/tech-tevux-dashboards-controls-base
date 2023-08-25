@@ -3,12 +3,10 @@ using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.CodeAnalysis.Scripting.Hosting;
 using System.Diagnostics;
 using System.Runtime.Loader;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class CSharpScriptControlBase : ControlBase {
+public partial class CSharpScriptControlBase : ControlBase, ICSharpScriptControl {
     private readonly CancellationTokenSource _globalCts = new();
     private bool _isDisposed;
 
