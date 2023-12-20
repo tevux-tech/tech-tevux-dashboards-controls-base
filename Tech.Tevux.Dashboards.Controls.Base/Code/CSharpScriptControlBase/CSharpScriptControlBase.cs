@@ -2,12 +2,15 @@ using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.CodeAnalysis.Scripting.Hosting;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Loader;
 
 namespace Tech.Tevux.Dashboards.Controls;
 
 public partial class CSharpScriptControlBase : ControlBase, ICSharpScriptControl {
+    [SuppressMessage("Usage", "CA2213:Disposable fields should be disposed", Justification = "https://stackoverflow.com/questions/6960520/when-to-dispose-cancellationtokensource")]
     private readonly CancellationTokenSource _globalCts = new();
+
     private bool _isDisposed;
 
     static CSharpScriptControlBase() {
@@ -60,8 +63,8 @@ public partial class CSharpScriptControlBase : ControlBase, ICSharpScriptControl
                 // Official docs say you should always dispose CTS'es, but that is complicated because you then may get ObjectDisposedException.
                 // Internet says it is not so crucial and Cancel() is enough in 99.9% of cases, unless one uses WaitHandles, which is very rare.
                 // https://stackoverflow.com/questions/6960520/when-to-dispose-cancellationtokensource
-
                 _globalCts.Cancel();
+
                 CancelExecution();
             }
 
@@ -78,7 +81,7 @@ public partial class CSharpScriptControlBase : ControlBase, ICSharpScriptControl
         try {
             var options = ScriptOptions.Default;
 
-            var funkyLoader = new InteractiveAssemblyLoader();
+            using var funkyLoader = new InteractiveAssemblyLoader();
             foreach (var assembly in assemblyContext.Assemblies) {
                 if (assembly.IsDynamic == false) {
                     // _log.Info("Addding assembly {0} to script execution context.", assembly.FullName);

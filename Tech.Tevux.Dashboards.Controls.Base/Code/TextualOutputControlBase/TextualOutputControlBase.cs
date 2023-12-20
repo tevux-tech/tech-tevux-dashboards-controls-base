@@ -1,17 +1,14 @@
 ﻿using System.Windows.Media;
 
 namespace Tech.Tevux.Dashboards.Controls;
+
 [HideExposedOption(nameof(Caption))]
 public partial class TextualOutputControlBase : ControlBase, ITextualOutputControl, IConditionalTextualOutputControl {
-    private readonly object _rulesLock = new();
-
     private readonly Dictionary<uint, SolidColorBrush> _backgroundBrushCache = new();
-    private readonly Dictionary<uint, SolidColorBrush> _foregroundBrushCache = new();
     private readonly SolidColorBrush _defaultBackgroundBrush;
     private readonly SolidColorBrush _defaultForegroundBrush;
-
-
-    protected List<AppearanceRule> AppearanceRules { get; } = new();
+    private readonly Dictionary<uint, SolidColorBrush> _foregroundBrushCache = new();
+    private readonly object _rulesLock = new();
 
     public TextualOutputControlBase() {
         var backgroundBytes = BitConverter.GetBytes(AppearanceRuleStyle.Normal.Background);
@@ -22,6 +19,9 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
         _defaultForegroundBrush = new SolidColorBrush(Color.FromArgb(foregroundBytes[3], foregroundBytes[2], foregroundBytes[1], foregroundBytes[0]));
         _defaultForegroundBrush.Freeze();
     }
+
+
+    protected Collection<AppearanceRule> AppearanceRules { get; } = new();
 
     public List<IAppearanceRuleStyle> GetStyles() {
         return AppearanceRuleStyle.GetAllStyles();
