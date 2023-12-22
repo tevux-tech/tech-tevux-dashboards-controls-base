@@ -2,10 +2,6 @@
 
 [HideExposedOption(nameof(Caption))]
 public partial class NumericInputControlBase : ControlBase, INumericControl, INumericInputControl, INumericIncrementableControl {
-    public override void Reconfigure() {
-        base.Reconfigure();
-    }
-
     #region IDisposable
 
     private bool _isDisposed;

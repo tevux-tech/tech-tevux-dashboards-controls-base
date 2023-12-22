@@ -53,10 +53,6 @@ public partial class CSharpScriptControlBase : ControlBase, ICSharpScriptControl
         });
     }
 
-    public override void OnApplyTemplate() {
-        base.OnApplyTemplate();
-    }
-
     protected override void Dispose(bool isCalledManually) {
         if (_isDisposed == false) {
             if (isCalledManually) {
