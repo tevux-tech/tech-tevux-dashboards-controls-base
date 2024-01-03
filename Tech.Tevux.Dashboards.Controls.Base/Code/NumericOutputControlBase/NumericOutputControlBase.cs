@@ -23,7 +23,7 @@ public partial class NumericOutputControlBase : ControlBase, INumericControl, IT
     protected Collection<AppearanceRule> AppearanceRules { get; } = new();
 
     public List<IAppearanceRuleStyle> GetStyles() {
-        return AppearanceRuleStyle.GetAllStyles();
+        return new List<IAppearanceRuleStyle>(AppearanceRuleStyle.GetAllStyles());
     }
 
     public override void Reconfigure() {
