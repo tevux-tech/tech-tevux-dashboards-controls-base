@@ -15,7 +15,7 @@
 		<readme>README.md</readme>
 		<tags>tevux.tech</tags>
 		<frameworkReferences>
-			<group targetFramework="net8.0-windows">
+			<group targetFramework="net8.0-windows7.0">
 				<frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
 			</group>
 		</frameworkReferences>

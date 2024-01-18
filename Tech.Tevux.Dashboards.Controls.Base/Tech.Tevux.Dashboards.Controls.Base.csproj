@@ -6,9 +6,9 @@
     <NoWarn>CS1591,CA1031</NoWarn>
     <UseWPF>true</UseWPF>
     <OutputType>Library</OutputType>
-    <Version>1.0.0-preview.14</Version>
+    <Version>1.0.0-preview.16</Version>
     <Company>Tevux Technologies</Company>
-    <Copyright>© 2022 Tevux Technologies</Copyright>
+    <Copyright>© 2022-2024 Tevux Technologies</Copyright>
     <Title>Basic controls for Tevux Dashboards</Title>
     <Authors>devbotas</Authors>
     <Description>Base classes for custom Tevux Dashboards controls. Optional, but they implement quite a lot common features.</Description>
