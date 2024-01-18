@@ -15,24 +15,20 @@
 		<readme>README.md</readme>
 		<tags>tevux.tech</tags>
 		<frameworkReferences>
-			<group targetFramework="net6.0-windows7.0">
+			<group targetFramework="net8.0-windows">
 				<frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
 			</group>
 		</frameworkReferences>
 		<dependencies>
-			<group targetFramework="net6.0" >
-				<dependency id="Tevux.Dashboards.Abstractions" version="1.0.0-preview.43" exclude="runtime"/>
+			<group targetFramework="net8.0" >
+				<dependency id="Tevux.Dashboards.Abstractions" version="1.0.0-preview.45" exclude="runtime"/>
 				<dependency id="Tech.Tevux.Dashboards.Controls.Common" version="0.2.0-preview.4"/>
-				<dependency id="Microsoft.CodeAnalysis.CSharp.Scripting" version="4.4.0"/>
-				<dependency id="Microsoft.CodeAnalysis.CSharp.Workspaces" version="4.4.0"/>
-				<dependency id="Microsoft.CodeAnalysis.Scripting.Common" version="4.4.0"/>
-				<dependency id="DevBot9.Mvvm" version="22.1.3"/>
 			</group>
 		</dependencies>
 	</metadata>
 	<files>
 		<file src="Resources\tevux-logo-symbol.png" target="images\" />
 		<file src="..\README.md" target="\" />
-		<file src="bin\Publish\$id$.*" target="lib/net6.0" exclude="**.deps.json;**.runtimeconfig.json" />
+		<file src="bin\Publish\$id$.*" target="lib/net8.0" exclude="**.deps.json;**.runtimeconfig.json" />
 	</files>
 </package>
