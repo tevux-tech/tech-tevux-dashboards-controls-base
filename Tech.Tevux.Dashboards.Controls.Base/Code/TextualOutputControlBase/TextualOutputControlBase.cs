@@ -21,10 +21,10 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
     }
 
 
-    protected Collection<AppearanceRule> AppearanceRules { get; } = new();
+    protected Collection<AppearanceRule> AppearanceRules { get; } = [];
 
     public List<IAppearanceRuleStyle> GetStyles() {
-        return new List<IAppearanceRuleStyle>(AppearanceRuleStyle.GetAllStyles());
+        return [..AppearanceRuleStyle.GetAllStyles()];
     }
 
     public override void Reconfigure() {

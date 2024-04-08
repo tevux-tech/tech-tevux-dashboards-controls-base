@@ -4,10 +4,10 @@ namespace Tech.Tevux.Dashboards.Controls;
 
 [HideExposedOption(nameof(Caption))]
 public partial class NumericOutputControlBase : ControlBase, INumericControl, ITextualOutputControl, IConditionalTextualOutputControl {
-    private readonly Dictionary<uint, SolidColorBrush> _backgroundBrushCache = new();
+    private readonly Dictionary<uint, SolidColorBrush> _backgroundBrushCache = [];
     private readonly SolidColorBrush _defaultBackgroundBrush;
     private readonly SolidColorBrush _defaultForegroundBrush;
-    private readonly Dictionary<uint, SolidColorBrush> _foregroundBrushCache = new();
+    private readonly Dictionary<uint, SolidColorBrush> _foregroundBrushCache = [];
     private readonly object _rulesLock = new();
 
     public NumericOutputControlBase() {
@@ -20,10 +20,10 @@ public partial class NumericOutputControlBase : ControlBase, INumericControl, IT
         _defaultForegroundBrush.Freeze();
     }
 
-    protected Collection<AppearanceRule> AppearanceRules { get; } = new();
+    protected Collection<AppearanceRule> AppearanceRules { get; } = [];
 
     public List<IAppearanceRuleStyle> GetStyles() {
-        return new List<IAppearanceRuleStyle>(AppearanceRuleStyle.GetAllStyles());
+        return [..AppearanceRuleStyle.GetAllStyles()];
     }
 
     public override void Reconfigure() {
