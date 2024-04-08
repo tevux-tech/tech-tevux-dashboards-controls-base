@@ -1,6 +1,6 @@
 namespace Tech.Tevux.Dashboards.Controls;
 
-public partial class ControlBase : ContentControl, IDisposable, IBasicControl, IErrorMessageProviderControl, ITooltipProvider {
+public partial class ControlBase : ContentControl, IBasicControl, IErrorMessageProviderControl, ITooltipProvider {
     public virtual void Reconfigure() {
         // Nothing to do for this class. But those deriving from this, should override Reconfigure method.
     }
@@ -16,15 +16,15 @@ public partial class ControlBase : ContentControl, IDisposable, IBasicControl, I
     }
 
     protected virtual void Dispose(bool isCalledManually) {
-        if (_isDisposed == false) {
-            if (isCalledManually) {
-                // Dispose managed objects here.
-            }
-
-            // Free unmanaged resources here and set large fields to null.
-
-            _isDisposed = true;
+        if (_isDisposed) { return; }
+        
+        if (isCalledManually) {
+            // Dispose managed objects here.
         }
+
+        // Free unmanaged resources here and set large fields to null.
+
+        _isDisposed = true;
     }
 
     protected ControlBase() {

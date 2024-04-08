@@ -1,11 +1,7 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
 
 [HideExposedOption(nameof(Caption))]
-public partial class NumericInputControlBase : ControlBase, INumericControl, INumericInputControl, INumericIncrementableControl, IDisposable, IErrorMessageProviderControl {
-    public override void Reconfigure() {
-        base.Reconfigure();
-    }
-
+public partial class NumericInputControlBase : ControlBase, INumericControl, INumericInputControl, INumericIncrementableControl {
     #region IDisposable
 
     private bool _isDisposed;
