@@ -7,8 +7,12 @@ public partial class ControlBase {
         typeof(ControlBase),
         new PropertyMetadata(""));
 
+    #region IErrorMessageProviderControl Members
+
     public string ErrorMessage {
         get { return (string)GetValue(ErrorMessageProperty); }
         set { SetValue(ErrorMessageProperty, value); }
     }
+
+    #endregion
 }

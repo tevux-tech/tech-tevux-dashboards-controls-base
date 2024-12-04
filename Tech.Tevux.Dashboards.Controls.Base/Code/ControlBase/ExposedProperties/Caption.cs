@@ -15,10 +15,14 @@ public partial class ControlBase {
             }
         }));
 
+    #region IBasicControl Members
+
     [ExposedSingleLineText]
     [Category(OptionCategory.Main)]
     public string Caption {
         get { return (string)GetValue(CaptionProperty); }
         set { SetValue(CaptionProperty, value); }
     }
+
+    #endregion
 }

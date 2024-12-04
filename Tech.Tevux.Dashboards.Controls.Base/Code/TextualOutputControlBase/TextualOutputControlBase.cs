@@ -23,10 +23,6 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
 
     protected Collection<AppearanceRule> AppearanceRules { get; } = [];
 
-    public List<IAppearanceRuleStyle> GetStyles() {
-        return [..AppearanceRuleStyle.GetAllStyles()];
-    }
-
     public override void Reconfigure() {
         base.Reconfigure();
 
@@ -58,6 +54,14 @@ public partial class TextualOutputControlBase : ControlBase, ITextualOutputContr
         // Reformatting last used value.       
         ApplyAppearanceRules();
     }
+
+    #region IConditionalTextualOutputControl Members
+
+    public List<IAppearanceRuleStyle> GetStyles() {
+        return [..AppearanceRuleStyle.GetAllStyles()];
+    }
+
+    #endregion
 
     protected void ApplyAppearanceRules() {
         var ruleApplied = false;

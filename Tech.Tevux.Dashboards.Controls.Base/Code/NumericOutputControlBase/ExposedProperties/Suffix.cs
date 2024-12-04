@@ -15,10 +15,14 @@ public partial class NumericOutputControlBase {
             }
         }));
 
+    #region ITextualOutputControl Members
+
     [ExposedSingleLineText]
     [Category(OptionCategory.Visuals)]
     public string Suffix {
         get { return (string)GetValue(SuffixProperty); }
         set { SetValue(SuffixProperty, value); }
     }
+
+    #endregion
 }
