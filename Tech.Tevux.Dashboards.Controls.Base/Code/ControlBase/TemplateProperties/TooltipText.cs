@@ -7,8 +7,12 @@ public partial class ControlBase {
         typeof(ControlBase),
         new PropertyMetadata(""));
 
+    #region ITooltipProvider Members
+
     public string TooltipText {
         get { return (string)GetValue(TooltipTextProperty); }
         set { SetValue(TooltipTextProperty, value); }
     }
+
+    #endregion
 }

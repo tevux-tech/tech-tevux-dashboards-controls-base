@@ -1,4 +1,5 @@
 ﻿namespace Tech.Tevux.Dashboards.Controls;
+
 public partial class NumericOutputControlBase {
     public static readonly DependencyProperty PrefixProperty = DependencyProperty.Register(
         nameof(Prefix),
@@ -14,10 +15,14 @@ public partial class NumericOutputControlBase {
             }
         }));
 
+    #region ITextualOutputControl Members
+
     [ExposedSingleLineText]
     [Category(OptionCategory.Visuals)]
     public string Prefix {
         get { return (string)GetValue(PrefixProperty); }
         set { SetValue(PrefixProperty, value); }
     }
+
+    #endregion
 }

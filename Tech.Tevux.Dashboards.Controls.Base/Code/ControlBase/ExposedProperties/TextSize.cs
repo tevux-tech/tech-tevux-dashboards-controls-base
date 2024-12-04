@@ -9,10 +9,14 @@ public partial class ControlBase {
             ((ControlBase)d).Reconfigure();
         }));
 
+    #region IBasicControl Members
+
     [ExposedNumber]
     [Category(OptionCategory.Visuals)]
     public double TextSize {
         get { return (double)GetValue(TextSizeProperty); }
         set { SetValue(TextSizeProperty, value); }
     }
+
+    #endregion
 }

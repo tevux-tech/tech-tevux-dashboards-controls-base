@@ -15,6 +15,8 @@ public partial class NumericOutputControlBase {
             }
         }));
 
+    #region IConditionalTextualOutputControl Members
+
     [ExposedMultiLineText]
     [DisplayName("Rules")]
     [Category(OptionCategory.Visuals)]
@@ -22,4 +24,6 @@ public partial class NumericOutputControlBase {
         get { return (string)GetValue(RulesProperty); }
         set { SetValue(RulesProperty, value); }
     }
+
+    #endregion
 }

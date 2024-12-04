@@ -9,10 +9,14 @@ public partial class ControlBase {
             ((ControlBase)d).Reconfigure();
         }));
 
+    #region IBasicControl Members
+
     [ExposedChoice(typeof(Alignment))]
     [Category(OptionCategory.Visuals)]
     public string Alignment {
         get { return (string)GetValue(AlignmentProperty); }
         set { SetValue(AlignmentProperty, value); }
     }
+
+    #endregion
 }

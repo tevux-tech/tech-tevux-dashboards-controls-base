@@ -17,7 +17,7 @@ public partial class ControlBase : ContentControl, IBasicControl, IErrorMessageP
 
     protected virtual void Dispose(bool isCalledManually) {
         if (_isDisposed) { return; }
-        
+
         if (isCalledManually) {
             // Dispose managed objects here.
         }

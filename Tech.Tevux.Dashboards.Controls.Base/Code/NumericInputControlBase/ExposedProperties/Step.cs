@@ -17,10 +17,14 @@ public partial class NumericInputControlBase {
             return isValid;
         });
 
+    #region INumericIncrementableControl Members
+
     [ExposedNumber]
     [Category(OptionCategory.Main)]
     public decimal Step {
         get { return (decimal)GetValue(StepProperty); }
         set { SetValue(StepProperty, value); }
     }
+
+    #endregion
 }

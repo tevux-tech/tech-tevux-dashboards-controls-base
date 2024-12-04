@@ -7,6 +7,7 @@ public partial class NumericInputControlBase {
         typeof(NumericInputControlBase),
         new PropertyMetadata(1000000m, (d, e) => { ((NumericInputControlBase)d).Reconfigure(); }));
 
+    #region INumericInputControl Members
 
     [ExposedNumber]
     [Category(OptionCategory.Main)]
@@ -14,4 +15,6 @@ public partial class NumericInputControlBase {
         get { return (decimal)GetValue(MaximumProperty); }
         set { SetValue(MaximumProperty, value); }
     }
+
+    #endregion
 }
